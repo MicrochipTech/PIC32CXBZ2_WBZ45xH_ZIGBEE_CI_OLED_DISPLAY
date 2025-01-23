@@ -492,7 +492,7 @@ Follow the steps provided in the link to [Build and program the application](htt
 
 ## 7. Run the demo<a name="step7">
 
-- After programming the board, the expected application behavior is shown in the below [video](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45x_ZIGBEE_CI_OLED_Display/blob/main/docs/Working_Demo.gif).
+- After programming the board, the expected application behavior is shown in the below [video](https://github.com/MicrochipTech/PIC32CXBZ2_WBZ45xH_ZIGBEE_CI_OLED_DISPLAY/blob/main/docs/Working_Demo.gif).
 
 ![Alt Text](docs/Working_Demo.gif)
 
