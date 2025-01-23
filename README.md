@@ -1,4 +1,4 @@
-# PIC32CXBZ2_WBZ45HPE ZIGBEE COMBINED INTERFACE WITH OLED DISPLAY
+# PIC32CXBZ2_WBZ451HPE ZIGBEE COMBINED INTERFACE WITH OLED DISPLAY
 
 <img src="docs/IoT-Made-Easy-Logo.png" width=100>
 
@@ -245,7 +245,7 @@ GFX_DISP_INTF_PIN_RW
 | Tip: Refer the link for [MPLAB® Harmony 3 Graphics Support Package](https://github.com/Microchip-MPLAB-Harmony/gfx)!! |
 | --- |
 
-- From the Cloned folder copy "WBZ451_ZIGBEE_CI_OLED_LEGATO.zip" file to the folder firmware\src\config\default under your MPLAB Harmony v3 application project.
+- From the Cloned folder copy "WBZ451HPE_ZIGBEE_CI_OLED_LEGATO.zip" file to the folder firmware\src\config\default under your MPLAB Harmony v3 application project.
 
 - Open Legato graphics composer from “Project Graph > Plugins > Legato Graphics Composer”.
 
@@ -263,7 +263,7 @@ GFX_DISP_INTF_PIN_RW
 
 ![](docs/image_1.png)
 
-- The Legato Graphics Composer for the "WBZ451_ZIGBEE_CI_OLED_LEGATO.zip" OLED Application is shown below.
+- The Legato Graphics Composer for the "WBZ451HPE_ZIGBEE_CI_OLED_LEGATO.zip" OLED Application is shown below.
 
 ![](docs/legato_composer.png)
 
@@ -333,8 +333,16 @@ GFX_DISP_INTF_PIN_RW
 
 - In your MPLAB Harmony v3 based application go to "firmware\src\app.h" and do the following changes.
 
-	- Add the line "APP_MSG_OLEDC_EVT" as shown below.
-	
+- Add the line "APP_STATE_LCD_INIT" as shown below.
+
+```
+APP_STATE_LCD_INIT,
+```
+
+![](docs/APP_MSG_DISPLAY_EVT1.png)
+
+- Add the line "APP_MSG_OLEDC_EVT" as shown below.
+
 ```
 APP_MSG_OLEDC_EVT,
 ```
@@ -342,13 +350,20 @@ APP_MSG_OLEDC_EVT,
 
 - In your MPLAB Harmony v3 based application go to "firmware\src\app.c" and do the following changes.
 
-	- Copy & Paste the following Code in Include.
+- Copy & Paste the following Code in Include.
 	
 ```
 #include "click_routines/oled_c/oled_c.h" 
+#include <app_zigbee/zigbee_console/console.h>
 ```
 
 ![](docs/app_h_include.png)
+
+```
+appSnprintf((uint8_t *)"\r\nWBZ451HPE_OLED_ZIGBEE\r\n");
+```
+
+![](docs/app_h_include13.png)
 
 ```
 else if( p_appMsg->msgId == APP_MSG_OLEDC_EVT)
@@ -412,7 +427,7 @@ char printData[30];
 
 ```
 sprintf(printData, "TEMP: %d.%dC", (int)(reportValue/THERMOSTAT_LOCAL_TEMPERATURE_SCALE),(int)(reportValue%THERMOSTAT_LOCAL_TEMPERATURE_SCALE));
-appSnprintf( "<-Temperature Measurement Attr Report: Value = 0x%02hx\r\n", reportValue);
+(void) appSnprintf( "<-Temperature Measurement Attr Report: Value = 0x%02hx\r\n", reportValue);
 LCD_PRINT(0,1,printData);
 ```
 
@@ -422,7 +437,7 @@ LCD_PRINT(0,1,printData);
 
 ```
 sprintf(printData, "HUMD: %d.%drh", (int)(reportValue/THERMOSTAT_LOCAL_TEMPERATURE_SCALE),(int)(reportValue%THERMOSTAT_LOCAL_TEMPERATURE_SCALE));
-appSnprintf( "<-Relative Humidity Measurement Attr Report: Value = 0x%x\r\n", reportValue);
+(void) appSnprintf( "<-Relative Humidity Measurement Attr Report: Value = 0x%x\r\n", reportValue);
 LCD_PRINT(0,2,printData);
 ```
 
@@ -471,7 +486,7 @@ Follow the steps provided in the link to [program the precompiled hex file](http
 
 The application folder can be found by navigating to the following path: 
 
-- "WBZ451_ZIGBEE_CI_OLED\firmware\WBZ451_ZIGBEE_CI_OLED.X"
+- "WBZ451H_ZIGBEE_CI_OLED\firmware\WBZ451HPE_ZIGBEE_OLED.X"
 
 Follow the steps provided in the link to [Build and program the application](https://github.com/Microchip-MPLAB-Harmony/wireless_apps_pic32cxbz2_wbz45/tree/master/apps/ble/advanced_applications/ble_sensor#build-and-program-the-application-guid-3d55fb8a-5995-439d-bcd6-deae7e8e78ad-section).
 

@@ -50,10 +50,10 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "peripheral/tc/plib_tc1.h"
-#include "peripheral/tc/plib_tc0.h"
 #include "peripheral/rtc/plib_rtc.h"
-#include "system/time/sys_time.h"
+#include "peripheral/tc/plib_tc0.h"
 #include "peripheral/nvm/plib_nvm.h"
+#include "system/time/sys_time.h"
 #include "peripheral/trng/plib_trng.h"
 #include "driver/spi/drv_spi.h"
 #include "zigbee/z3device_configs/stackConfig.h"
@@ -98,8 +98,8 @@
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "peripheral/sercom/spi_master/plib_sercom2_spi_master.h"
-#include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/sercom/usart/plib_sercom0_usart.h"
+#include "peripheral/evsys/plib_evsys.h"
 /*******************************************************************************
 * Copyright (C) 2022 Microchip Technology Inc. and its subsidiaries.
 *

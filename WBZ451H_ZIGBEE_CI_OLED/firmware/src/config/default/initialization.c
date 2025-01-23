@@ -515,9 +515,9 @@ void SYS_Initialize ( void* data )
 
     TC1_TimerInitialize();
 
-    TC0_TimerInitialize();
-
     RTC_Initialize();
+
+    TC0_TimerInitialize();
 
     NVM_Initialize();
 
@@ -525,9 +525,9 @@ void SYS_Initialize ( void* data )
 
     SERCOM2_SPI_Initialize();
 
-    EVSYS_Initialize();
-
     SERCOM0_USART_Initialize();
+
+    EVSYS_Initialize();
 
 
 
